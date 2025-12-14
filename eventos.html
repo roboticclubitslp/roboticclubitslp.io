@@ -63,7 +63,6 @@ main {
 
 h1 {
     text-align: center;
-    color: white;
     font-size: clamp(32px, 6vw, 52px);
     margin-bottom: 50px;
 }
@@ -77,17 +76,12 @@ h1 {
     margin-bottom: 50px;
 }
 
-.evento h2 {
-    color: white;
-    margin-bottom: 10px;
-}
-
 .evento p {
     color: #e0e0e0;
     max-width: 800px;
 }
 
-/* ===== GALERÍA DE EVENTO ===== */
+/* ===== GALERÍA ===== */
 .fotos-evento {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -97,15 +91,37 @@ h1 {
 
 .fotos-evento img {
     width: 100%;
-    height: 160px;
-    object-fit: cover;
+    height: auto;              /* NO se corta */
+    object-fit: contain;       /* imagen completa */
+    background: rgba(0,0,0,0.4);
+    padding: 8px;
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(255,159,26,0.4);
+    cursor: zoom-in;
     transition: transform 0.3s;
 }
 
 .fotos-evento img:hover {
     transform: scale(1.05);
+}
+
+/* ===== VISOR ===== */
+#visor {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    cursor: zoom-out;
+}
+
+#visor img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 16px;
+    box-shadow: 0 0 30px rgba(255,159,26,0.6);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -134,54 +150,53 @@ h1 {
 <main>
 <h1>Eventos</h1>
 
-<!-- EVENTO 1 -->
 <div class="evento">
     <h2>++++++++++++++</h2>
-    <p>
-        ///////////////
-    </p>
-
+    <p>///////////////</p>
     <div class="fotos-evento">
-        <img src="evento1_1.jpg">
-        <img src="evento1_2.jpg">
-        <img src="evento1_3.jpg">
+        <img src="evento1_1.jpg" onclick="verImagen(this)">
+        <img src="evento1_2.jpg" onclick="verImagen(this)">
+        <img src="evento1_3.jpg" onclick="verImagen(this)">
     </div>
 </div>
 
-<!-- EVENTO 2 -->
 <div class="evento">
     <h2>Noche de Estrellas</h2>
-    <p>
-        25 de noviembre de 2025, exposicion de proyectos y talleres.
-    </p>
-
+    <p>25 de noviembre de 2025, exposición de proyectos y talleres.</p>
     <div class="fotos-evento">
-        <img src="evento2_1.jpg">
-        <img src="evento2_2.jpg">
-        <img src="evento2_3.jpg">
+        <img src="evento2_1.jpg" onclick="verImagen(this)">
+        <img src="evento2_2.jpg" onclick="verImagen(this)">
+        <img src="evento2_3.jpg" onclick="verImagen(this)">
     </div>
 </div>
 
-<!-- EVENTO 3 -->
 <div class="evento">
-    <h2>Curso de solidworks</h2>
-    <p>
-        Los viernes, a partir de las 11, duracion de 1 hora, en el club de robotica
-    </p>
-
+    <h2>Curso de SolidWorks</h2>
+    <p>Los viernes a partir de las 11, duración de 1 hora, en el club de robótica.</p>
     <div class="fotos-evento">
-        <img src="evento3_1.jpg">
-        <img src="evento3_2.jpg">
-        <img src="evento3_3.jpg">
+        <img src="evento3_1.jpg" onclick="verImagen(this)">
+        <img src="evento3_2.jpg" onclick="verImagen(this)">
+        <img src="evento3_3.jpg" onclick="verImagen(this)">
     </div>
 </div>
 
 </main>
 
+<!-- VISOR -->
+<div id="visor" onclick="cerrarVisor()">
+    <img id="visor-img">
+</div>
+
+<script>
+function verImagen(img) {
+    document.getElementById("visor-img").src = img.src;
+    document.getElementById("visor").style.display = "flex";
+}
+
+function cerrarVisor() {
+    document.getElementById("visor").style.display = "none";
+}
+</script>
+
 </body>
 </html>
-
-
-
-
-
