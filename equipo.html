@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Equipo | Robotic Club</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Roboto Mono', monospace;
+    background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url("fondo.jpg") center / cover no-repeat fixed;
+    color: white;
+    min-height: 100vh;
+}
+
+/* ===== MENÚ ===== */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+}
+
+nav {
+    max-width: 1300px;
+    margin: auto;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #ff9f1a;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #ff9f1a;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* ===== CONTENIDO ===== */
+main {
+    padding-top: 140px;
+    max-width: 1300px;
+    margin: auto;
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    font-size: clamp(32px, 6vw, 52px);
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px rgba(255,159,26,0.6);
+}
+
+/* ===== EQUIPO ===== */
+.equipo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+}
+
+.miembro {
+    background: rgba(0,0,0,0.45);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 0 20px rgba(255,140,0,0.35);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.miembro:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 30px rgba(255,170,0,0.6);
+}
+
+.miembro img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ff9f1a;
+    margin-bottom: 15px;
+}
+
+.miembro h3 {
+    color: white;
+    margin: 10px 0 5px;
+}
+
+.miembro p {
+    color: #ffc36a;
+    font-size: 14px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+    <div class="logo">ROBOTIC CLUB</div>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="equipo.html">Equipo</a></li>
+</nav>
+</header>
+
+<main>
+<h1>Nuestro Equipo</h1>
+
+<div class="equipo">
+
+    <div class="miembro">
+        <img src="persona1.jpg">
+        <h3>Nombre 1</h3>
+        <p>Presidente</p>
+    </div>
+
+    <div class="miembro">
+        <img src="persona2.jpg">
+        <h3>Nombre 2</h3>
+        <p>Vicepresidente</p>
+    </div>
+
+    <div class="miembro">
+        <img src="persona3.jpg">
+        <h3>Nombre 3</h3>
+        <p>Encargado de laboratorio</p>
+    </div>
+
+    <div class="miembro">
+        <img src="persona4.jpg">
+        <h3>Nombre 4</h3>
+        <p></p>
+    </div>
+
+</div>
+</main>
+
+</body>
+</html>
