@@ -16,7 +16,6 @@ body {
         linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
         url("fondo.jpg") center / cover no-repeat fixed;
     color: white;
-    min-height: 100vh;
 }
 
 /* ===== MENÚ ===== */
@@ -87,44 +86,31 @@ h1 {
     text-shadow: 0 0 15px rgba(255,159,26,0.6);
 }
 
-p {
-    color: #ffc36a;
-    max-width: 800px;
-    margin: 20px auto;
-    font-size: 18px;
-    line-height: 1.6;
-}
-
 /* ===== VIDEO ===== */
-.video-section {
-    margin: 80px auto;
+.video-box {
     max-width: 900px;
-    padding: 20px;
+    margin: 50px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(255,159,26,0.4);
 }
 
-.video-section h2 {
-    color: #ff9f1a;
-    margin-bottom: 20px;
-}
-
-.video-section video {
+.video-box video {
     width: 100%;
-    border-radius: 15px;
-    box-shadow: 0 0 25px rgba(255,159,26,0.4);
+    display: block;
 }
 
-/* ===== SECCIÓN INFO ===== */
+/* ===== SECCIONES ===== */
 .info {
     margin-top: 80px;
     padding: 60px 20px;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.45);
     border-top: 2px solid rgba(255,159,26,0.3);
     border-bottom: 2px solid rgba(255,159,26,0.3);
 }
 
 .info h2 {
     color: #ff9f1a;
-    margin-bottom: 20px;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -151,33 +137,27 @@ p {
 </header>
 
 <main>
-    <h1>ROBOTIC CLUB</h1>
-    <p>
-        Innovación, tecnología y trabajo en equipo.
-    </p>
 
-    <!-- ===== VIDEO DE PRESENTACIÓN ===== -->
-    <section class="video-section">
-        <h2>Video de Presentación</h2>
-        <video autoplay loop controls>
-            <source src="videoplayback.mp4" type="video/mp4">
-            Tu navegador no soporta video HTML5.
-        </video>
-    </section>
+<h1>ROBOTIC CLUB</h1>
 
-    <section class="info">
-        <h2>Misión</h2>
-        <p>
-            ///////////////
-        </p>
-    </section>
+<!-- 🎥 VIDEO DE PRESENTACIÓN -->
+<div class="video-box">
+    <video autoplay loop muted controls>
+        <source src="videoplayback.mp4" type="video/mp4">
+        Tu navegador no soporta video.
+    </video>
+</div>
 
-    <section class="info">
-        <h2>Visión</h2>
-        <p>
-            ///////////////
-        </p>
-    </section>
+<section class="info">
+    <h2>Misión</h2>
+    <p>///////////////</p>
+</section>
+
+<section class="info">
+    <h2>Visión</h2>
+    <p>///////////////</p>
+</section>
+
 </main>
 
 </body>
