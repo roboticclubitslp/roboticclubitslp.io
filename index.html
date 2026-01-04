@@ -6,6 +6,9 @@
 
 <link rel="icon" type="image/png" href="icono.png">
 
+<!-- FUENTE -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
 html {
     scroll-behavior: smooth;
@@ -15,9 +18,9 @@ body {
     margin: 0;
     font-family: 'Roboto Mono', monospace;
     background:
-        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
         url("fondo.jpg") center / cover no-repeat fixed;
-    color: white;
+    color: #ededed;
 }
 
 /* ===== MENÚ ===== */
@@ -42,11 +45,12 @@ nav {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     color: #ff9f1a;
-    font-weight: bold;
-    letter-spacing: 2px;
-    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-size: 22px;
+    text-shadow: 0 0 10px rgba(255,159,26,0.5);
 }
 
 .logo img {
@@ -63,7 +67,7 @@ nav ul {
 }
 
 nav ul li a {
-    color: white;
+    color: #ededed;
     text-decoration: none;
     font-size: 15px;
     position: relative;
@@ -91,9 +95,12 @@ main {
 }
 
 h1 {
-    font-size: clamp(36px, 6vw, 60px);
-    letter-spacing: 4px;
-    text-shadow: 0 0 15px rgba(255,159,26,0.6);
+    font-size: clamp(38px, 7vw, 64px);
+    letter-spacing: 6px;
+    color: white;
+    text-shadow:
+        0 0 15px rgba(255,159,26,0.6),
+        0 0 30px rgba(255,159,26,0.3);
 }
 
 /* ===== VIDEO ===== */
@@ -112,21 +119,48 @@ h1 {
 
 /* ===== SECCIONES ===== */
 .info {
-    margin-top: 80px;
-    padding: 60px 20px;
-    background: rgba(0,0,0,0.45);
-    border-top: 2px solid rgba(255,159,26,0.3);
-    border-bottom: 2px solid rgba(255,159,26,0.3);
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 45px 35px;
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(255,159,26,0.3);
+    border-radius: 18px;
+    box-shadow: 0 0 25px rgba(255,159,26,0.15);
+    transition: 0.3s ease;
+}
+
+.info:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 40px rgba(255,159,26,0.3);
 }
 
 .info h2 {
+    font-size: 28px;
+    letter-spacing: 3px;
     color: #ff9f1a;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px rgba(255,159,26,0.4);
+}
+
+.info p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #ededed;
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     nav ul {
         display: none;
+    }
+
+    h1 {
+        letter-spacing: 3px;
+    }
+
+    .info {
+        padding: 35px 20px;
     }
 }
 </style>
@@ -136,8 +170,9 @@ h1 {
 
 <header>
 <nav>
-    <div class="logo">ROBOTIC CLUB
-    <img src="pato.gif" alt="Pato bailando">
+    <div class="logo">
+        ROBOTIC CLUB
+        <img src="pato.gif" alt="Pato bailando">
     </div>
     <ul>
         <li><a href="index.html">Inicio</a></li>
@@ -162,25 +197,30 @@ h1 {
 
 <section class="info">
     <h2>Misión</h2>
-    <p>Inspirar y capacitar a los estudiantes para que desarrollen habilidades tecnológicas y de pensamiento crítico, a través de experiencias prácticas que integran la robótica con otras diciplinas de la ciencia y la ingenieria.</p>
+    <p>
+        Inspirar y capacitar a los estudiantes para que desarrollen habilidades tecnológicas y de pensamiento crítico,
+        a través de experiencias prácticas que integran la robótica con otras disciplinas de la ciencia y la ingeniería.
+    </p>
 </section>
 
 <section class="info">
     <h2>Objetivo</h2>
-    <p>Se busca fomentar el interés por la ciencia y la ingeniería, Motivando a los participantes a investigar, experimentar y trabajar en equipo, promover la participación en concursos de robótica y proporcionar un espacio donde los estudiantes puedan aplicar sus conocimientos en proyectos reales.</p>
+    <p>
+        Se busca fomentar el interés por la ciencia y la ingeniería, motivando a los participantes a investigar,
+        experimentar y trabajar en equipo, promover la participación en concursos de robótica y proporcionar un espacio
+        donde los estudiantes puedan aplicar sus conocimientos en proyectos reales.
+    </p>
 </section>
-    
+
 <section class="info">
     <h2>Visión</h2>
-    <p>Combertirnos en un referente de innovación tecnológica dentro de la institucion y en la comunidad, formando estudiantes que esten preparados para enfrentar los retos del futuro.</p>
+    <p>
+        Convertirnos en un referente de innovación tecnológica dentro de la institución y en la comunidad,
+        formando estudiantes que estén preparados para enfrentar los retos del futuro.
+    </p>
 </section>
 
 </main>
 
 </body>
 </html>
-
-
-
-
-
