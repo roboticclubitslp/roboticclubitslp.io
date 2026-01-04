@@ -9,6 +9,10 @@
 <!-- FUENTE -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
 
+<!-- ICONOS REDES -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 html {
     scroll-behavior: smooth;
@@ -118,7 +122,8 @@ h1 {
 }
 
 /* ===== SECCIONES ===== */
-.info {
+.info,
+.redes {
     max-width: 900px;
     margin: 80px auto;
     padding: 45px 35px;
@@ -129,24 +134,55 @@ h1 {
     transition: 0.3s ease;
 }
 
-.info:hover {
+.info:hover,
+.redes:hover {
     transform: translateY(-6px);
     box-shadow: 0 0 40px rgba(255,159,26,0.3);
 }
 
-.info h2 {
+.info h2,
+.redes h2 {
     font-size: 28px;
     letter-spacing: 3px;
     color: #ff9f1a;
     text-transform: uppercase;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-shadow: 0 0 8px rgba(255,159,26,0.4);
 }
 
 .info p {
     font-size: 16px;
     line-height: 1.8;
-    color: #ededed;
+}
+
+/* ===== REDES ===== */
+.redes-contenedor {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+
+.redes a {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 2px solid #ff9f1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    color: #ff9f1a;
+    text-decoration: none;
+    transition: 0.3s ease;
+    box-shadow: 0 0 15px rgba(255,159,26,0.3);
+}
+
+.redes a:hover {
+    background: #ff9f1a;
+    color: black;
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 0 30px rgba(255,159,26,0.6);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -159,7 +195,8 @@ h1 {
         letter-spacing: 3px;
     }
 
-    .info {
+    .info,
+    .redes {
         padding: 35px 20px;
     }
 }
@@ -187,7 +224,6 @@ h1 {
 
 <h1>ROBOTIC CLUB</h1>
 
-<!-- 🎥 VIDEO DE PRESENTACIÓN -->
 <div class="video-box">
     <video autoplay loop muted controls>
         <source src="video_!.mp4" type="video/mp4">
@@ -206,18 +242,29 @@ h1 {
 <section class="info">
     <h2>Objetivo</h2>
     <p>
-        Se busca fomentar el interés por la ciencia y la ingeniería, motivando a los participantes a investigar,
-        experimentar y trabajar en equipo, promover la participación en concursos de robótica y proporcionar un espacio
-        donde los estudiantes puedan aplicar sus conocimientos en proyectos reales.
+        Fomentar el interés por la ciencia y la ingeniería, motivando a los participantes a investigar,
+        experimentar y trabajar en equipo, promoviendo la participación en concursos de robótica.
     </p>
 </section>
 
 <section class="info">
     <h2>Visión</h2>
     <p>
-        Convertirnos en un referente de innovación tecnológica dentro de la institución y en la comunidad,
-        formando estudiantes que estén preparados para enfrentar los retos del futuro.
+        Convertirnos en un referente de innovación tecnológica dentro de la institución y la comunidad,
+        formando estudiantes preparados para enfrentar los retos del futuro.
     </p>
+</section>
+
+<section class="redes">
+    <h2>Síguenos</h2>
+    <div class="redes-contenedor">
+        <a href="https://www.facebook.com/profile.php?id=61573092863989" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/roboticclubitslp/" title="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
 </section>
 
 </main>
