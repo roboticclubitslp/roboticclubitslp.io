@@ -8,309 +8,49 @@
 
 <link rel="icon" type="image/png" href="icono.png">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
-
-<style>
-/* ===== BASE ===== */
-body {
-    margin: 0;
-    font-family: 'Roboto Mono', monospace;
-    color: #ededed;
-    min-height: 100vh;
-    background: black;
-    overflow-x: hidden;
-    position: relative;
-}
-
-/* ===== FONDO PROFESIONAL ===== */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background:
-        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-        url("fondo.jpg") center center / cover no-repeat;
-    z-index: -1;
-    will-change: transform;
-}
-
-/* ===== MENÚ ===== */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.75);
-    backdrop-filter: blur(8px);
-    z-index: 1000;
-}
-
-nav {
-    max-width: 1300px;
-    margin: auto;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #ff9f1a;
-    font-weight: 600;
-    letter-spacing: 2px;
-    font-size: 20px;
-}
-
-.logo img {
-    width: 80px;
-    height: 40px;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-    padding: 0;
-    margin: 0;
-}
-
-nav ul li a {
-    color: #ededed;
-    text-decoration: none;
-    font-size: 15px;
-    position: relative;
-}
-
-nav ul li a::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    background: #ff9f1a;
-    left: 0;
-    bottom: -5px;
-    transition: width 0.3s;
-}
-
-nav ul li a:hover::after {
-    width: 100%;
-}
-
-/* ===== BOTÓN HAMBURGUESA ===== */
-.menu-btn {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-    cursor: pointer;
-    z-index: 4001;
-}
-
-.menu-btn span {
-    width: 28px;
-    height: 3px;
-    background: #ff9f1a;
-    border-radius: 2px;
-}
-
-/* ===== MENÚ MÓVIL ===== */
-.menu-movil {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.96);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 35px;
-    transform: translateX(100%);
-    transition: transform 0.35s ease;
-    z-index: 4000;
-}
-
-.menu-movil a {
-    color: #ff9f1a;
-    font-size: 22px;
-    letter-spacing: 3px;
-    text-decoration: none;
-}
-
-.menu-movil.activo {
-    transform: translateX(0);
-}
-
-/* ===== CONTENIDO ===== */
-main {
-    padding-top: 140px;
-    max-width: 1300px;
-    margin: auto;
-    text-align: center;
-}
-
-h1 {
-    font-size: clamp(32px, 6vw, 52px);
-    letter-spacing: 4px;
-    color: white;
-    text-shadow: 0 0 15px rgba(255,159,26,0.6);
-}
-
-/* ===== GALERÍA ===== */
-.galeria {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
-    padding: 40px 20px;
-}
-
-.galeria img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.3s;
-
-    box-shadow:
-        0 0 20px rgba(255,159,26,0.45),
-        0 0 45px rgba(255,159,26,0.25);
-}
-
-.galeria img:hover {
-    transform: scale(1.06);
-    filter: brightness(1.15);
-    box-shadow:
-        0 0 35px rgba(255,159,26,0.7),
-        0 0 70px rgba(255,159,26,0.35);
-}
-
-/* ===== POPUP ===== */
-.popup {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.88);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    z-index: 2000;
-}
-
-.popup img {
-    width: 90%;
-    max-width: 900px;
-    max-height: 85vh;
-    object-fit: contain;
-    border-radius: 18px;
-    box-shadow:
-        0 0 30px rgba(255,159,26,0.6),
-        0 0 80px rgba(255,159,26,0.35);
-}
-
-/* ===== FLECHAS ===== */
-.flecha {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 55px;
-    color: #ff9f1a;
-    cursor: pointer;
-    padding: 15px;
-}
-
-.flecha.izq { left: 30px; }
-.flecha.der { right: 30px; }
-
-.contador {
-    position: absolute;
-    bottom: 30px;
-    color: #ff9f1a;
-    font-size: 14px;
-}
-
-/* ===== CELULAR ===== */
-@media (max-width: 768px) {
-    
-        body::before {
-        background-size: contain;
-        background-position: center center;
-        background-attachment: scroll; /* se mueve con el dedo */
-    }
-
-    nav ul {
-        display: none;
-    }
-
-    .menu-btn {
-        display: flex;
-    }
-
-    main {
-        padding-top: 120px;
-    }
-
-    .flecha.izq { left: 10px; }
-    .flecha.der { right: 10px; }
-}
-</style>
+<link rel="stylesheet" href="estilos.css">
 </head>
-
+<script>
+fetch("header.html")
+    .then(res => res.text())
+    .then(html => {
+        document.getElementById("header").innerHTML = html;
+    });
+</script>
 <body>
 
-<header>
-<nav>
-    <div class="logo">
-        ROBOTIC CLUB
-        <img src="pato.gif">
-    </div>
-
-    <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="galeria.html">Galería</a></li>
-        <li><a href="eventos.html">Eventos</a></li>
-        <li><a href="equipo.html">Equipo</a></li>
-    </ul>
-
-    <div class="menu-btn" id="menuBtn">
-        <span></span><span></span><span></span>
-    </div>
-</nav>
-</header>
-
-<div class="menu-movil" id="menuMovil">
-    <a href="index.html">Inicio</a>
-    <a href="galeria.html">Galería</a>
-    <a href="eventos.html">Eventos</a>
-    <a href="equipo.html">Equipo</a>
-</div>
+<!-- HEADER -->
+<div id="header"></div>
 
 <main>
 <h1>Galería</h1>
 
 <div class="galeria">
-    <img src="foto1.jpg">
-    <img src="foto2.jpg">
-    <img src="foto3.jpg">
-    <img src="foto4.jpg">
-    <img src="foto5.jpg">
-    <img src="foto6.jpg">
-    <img src="foto7.jpeg">
-    <img src="foto8.jpeg">
-    <img src="foto9.jpeg">
-    <img src="foto10.jpeg">
-    <img src="foto11.jpeg">
-    <img src="foto12.jpeg">
-    <img src="foto13.jpeg">
-    <img src="foto14.jpeg">
-    <img src="foto15.jpeg">
-    <img src="foto16.jpeg">
-    <img src="foto17.jpeg">
-    <img src="foto18.jpeg">
-    <img src="foto19.jpeg">
-    <img src="foto20.jpeg">
-    <img src="foto21.jpeg">
-    <img src="foto22.jpeg">
-    <img src="foto23.jpeg">
+    <img src="fotos/foto1.jpg">
+    <img src="fotos/foto2.jpg">
+    <img src="fotos/foto3.jpg">
+    <img src="fotos/foto4.jpg">
+    <img src="fotos/foto5.jpg">
+    <img src="fotos/foto6.jpg">
+    <img src="fotos/foto7.jpeg">
+    <img src="fotos/foto8.jpeg">
+    <img src="fotos/foto9.jpeg">
+    <img src="fotos/foto10.jpeg">
+    <img src="fotos/foto11.jpeg">
+    <img src="fotos/foto12.jpeg">
+    <img src="fotos/foto13.jpeg">
+    <img src="fotos/foto14.jpeg">
+    <img src="fotos/foto15.jpeg">
+    <img src="fotos/foto16.jpeg">
+    <img src="fotos/foto17.jpeg">
+    <img src="fotos/foto18.jpeg">
+    <img src="fotos/foto19.jpeg">
+    <img src="fotos/foto20.jpeg">
+    <img src="fotos/foto21.jpeg">
+    <img src="fotos/foto22.jpeg">
+    <img src="fotos/foto23.jpeg">
 </div>
+
 </main>
 
 <div class="popup" id="popup">
@@ -321,30 +61,88 @@ h1 {
 </div>
 
 <script>
+/* ===== MENÚ (SEGURO) ===== */
 const btn = document.getElementById("menuBtn");
 const menu = document.getElementById("menuMovil");
-btn.onclick = () => menu.classList.toggle("activo");
-menu.querySelectorAll("a").forEach(a => a.onclick = () => menu.classList.remove("activo"));
 
+if (btn && menu) {
+    btn.onclick = () => menu.classList.toggle("activo");
+    menu.querySelectorAll("a").forEach(a =>
+        a.onclick = () => menu.classList.remove("activo")
+    );
+}
+
+/* ===== GALERÍA ===== */
 const imagenes = document.querySelectorAll(".galeria img");
 const popup = document.getElementById("popup");
 const popupImg = document.getElementById("popupImg");
 const contador = document.getElementById("contador");
-let indice = 0;
 
-imagenes.forEach((img, i) => img.onclick = () => { indice = i; mostrar(); });
+let indice = 0;
+let zoomActivo = false;
+let startX = 0;
+
+imagenes.forEach((img, i) => {
+    img.addEventListener("click", () => {
+        indice = i;
+        mostrar();
+    });
+});
 
 function mostrar() {
     popupImg.src = imagenes[indice].src;
     contador.textContent = `${indice + 1} / ${imagenes.length}`;
     popup.style.visibility = "visible";
+    popupImg.classList.remove("zoom");
+    zoomActivo = false;
 }
-function siguiente(){ indice = (indice + 1) % imagenes.length; mostrar(); }
-function anterior(){ indice = (indice - 1 + imagenes.length) % imagenes.length; mostrar(); }
 
-popup.onclick = e => { if (e.target === popup) popup.style.visibility = "hidden"; };
+function siguiente() {
+    indice = (indice + 1) % imagenes.length;
+    mostrar();
+}
+
+function anterior() {
+    indice = (indice - 1 + imagenes.length) % imagenes.length;
+    mostrar();
+}
+
+/* ===== ZOOM ===== */
+popupImg.addEventListener("click", e => {
+    e.stopPropagation();
+    zoomActivo = !zoomActivo;
+    popupImg.classList.toggle("zoom", zoomActivo);
+});
+
+/* ===== CERRAR ===== */
+popup.addEventListener("click", e => {
+    if (e.target === popup) popup.style.visibility = "hidden";
+});
+
+/* ===== TECLADO ===== */
+document.addEventListener("keydown", e => {
+    if (popup.style.visibility !== "visible") return;
+
+    if (e.key === "ArrowRight") siguiente();
+    if (e.key === "ArrowLeft") anterior();
+    if (e.key === "Escape") popup.style.visibility = "hidden";
+});
+
+/* ===== SWIPE ===== */
+popup.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+});
+
+popup.addEventListener("touchend", e => {
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+
+    if (Math.abs(diff) > 50) {
+        diff > 0 ? siguiente() : anterior();
+    }
+});
 </script>
+
 
 </body>
 </html>
-
