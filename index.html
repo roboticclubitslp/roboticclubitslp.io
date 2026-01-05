@@ -52,7 +52,6 @@ nav {
     font-weight: 600;
     letter-spacing: 3px;
     font-size: 22px;
-    text-shadow: 0 0 10px rgba(255,159,26,0.5);
 }
 
 .logo img {
@@ -96,6 +95,7 @@ nav ul li a:hover::after {
     flex-direction: column;
     gap: 6px;
     cursor: pointer;
+    z-index: 4001; /* 🔧 CLAVE */
 }
 
 .menu-btn span {
@@ -117,7 +117,7 @@ nav ul li a:hover::after {
     gap: 35px;
     transform: translateX(100%);
     transition: transform 0.35s ease;
-    z-index: 3000;
+    z-index: 4000; /* 🔧 SOBRE TODO */
 }
 
 .menu-movil a {
@@ -141,9 +141,6 @@ h1 {
     font-size: clamp(38px, 7vw, 64px);
     letter-spacing: 6px;
     color: white;
-    text-shadow:
-        0 0 15px rgba(255,159,26,0.6),
-        0 0 30px rgba(255,159,26,0.3);
 }
 
 /* ===== VIDEO ===== */
@@ -152,7 +149,6 @@ h1 {
     margin: 50px auto;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 0 30px rgba(255,159,26,0.4);
 }
 
 .video-box video {
@@ -167,16 +163,7 @@ h1 {
     margin: 80px auto;
     padding: 45px 35px;
     background: rgba(0,0,0,0.55);
-    border: 1px solid rgba(255,159,26,0.3);
     border-radius: 18px;
-    box-shadow: 0 0 25px rgba(255,159,26,0.15);
-    transition: 0.3s ease;
-}
-
-.info:hover,
-.redes:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 0 40px rgba(255,159,26,0.3);
 }
 
 .info h2,
@@ -184,9 +171,6 @@ h1 {
     font-size: 28px;
     letter-spacing: 3px;
     color: #ff9f1a;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    text-shadow: 0 0 8px rgba(255,159,26,0.4);
 }
 
 .info p {
@@ -199,7 +183,6 @@ h1 {
     display: flex;
     justify-content: center;
     gap: 35px;
-    flex-wrap: wrap;
 }
 
 .redes a {
@@ -213,15 +196,6 @@ h1 {
     font-size: 28px;
     color: #ff9f1a;
     text-decoration: none;
-    transition: 0.3s ease;
-    box-shadow: 0 0 15px rgba(255,159,26,0.3);
-}
-
-.redes a:hover {
-    background: #ff9f1a;
-    color: black;
-    transform: translateY(-6px) scale(1.05);
-    box-shadow: 0 0 30px rgba(255,159,26,0.6);
 }
 
 /* ===== SOLO CELULAR ===== */
@@ -246,7 +220,6 @@ h1 {
 
     .logo img {
         width: 55px;
-        height: auto;
     }
 
     main {
@@ -304,43 +277,29 @@ h1 {
 <div class="video-box">
     <video autoplay loop muted controls playsinline>
         <source src="video_!.mp4" type="video/mp4">
-        Tu navegador no soporta video.
     </video>
 </div>
 
 <section class="info">
     <h2>Misión</h2>
-    <p>
-        Inspirar y capacitar a los estudiantes para que desarrollen habilidades tecnológicas y de pensamiento crítico,
-        a través de experiencias prácticas que integran la robótica con otras disciplinas de la ciencia y la ingeniería.
-    </p>
+    <p>Inspirar y capacitar a los estudiantes para que desarrollen habilidades tecnológicas y de pensamiento crítico, a través de experiencias prácticas que integran la robótica con otras disciplinas de la ciencia y la ingeniería.</p>
 </section>
 
 <section class="info">
     <h2>Objetivo</h2>
-    <p>
-        Fomentar el interés por la ciencia y la ingeniería, motivando a los participantes a investigar,
-        experimentar y trabajar en equipo, promoviendo la participación en concursos de robótica.
-    </p>
+    <p>Fomentar el interés por la ciencia y la ingeniería, motivando a los participantes a investigar, experimentar y trabajar en equipo, promoviendo la participación en concursos de robótica.</p>
 </section>
 
 <section class="info">
     <h2>Visión</h2>
-    <p>
-        Convertirnos en un referente de innovación tecnológica dentro de la institución y la comunidad,
-        formando estudiantes preparados para enfrentar los retos del futuro.
-    </p>
+    <p>Convertirnos en un referente de innovación tecnológica dentro de la institución y la comunidad, formando estudiantes preparados para enfrentar los retos del futuro.</p>
 </section>
 
 <section class="redes">
     <h2>Síguenos</h2>
     <div class="redes-contenedor">
-        <a href="https://www.facebook.com/profile.php?id=61573092863989">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://www.instagram.com/roboticclubitslp/">
-            <i class="fab fa-instagram"></i>
-        </a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
 </section>
 
@@ -355,9 +314,7 @@ btn.onclick = () => {
 };
 
 menu.querySelectorAll("a").forEach(link => {
-    link.onclick = () => {
-        menu.classList.remove("activo");
-    };
+    link.onclick = () => menu.classList.remove("activo");
 });
 </script>
 
