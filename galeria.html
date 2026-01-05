@@ -62,8 +62,7 @@ fetch("header.html")
 
 <script>
 /* ===== MENÚ (SEGURO) ===== */
-const btn = document.getElementById("menuBtn");
-const menu = document.getElementById("menuMovil");
+
 
 if (btn && menu) {
     btn.onclick = () => menu.classList.toggle("activo");
@@ -145,4 +144,25 @@ popup.addEventListener("touchend", e => {
 
 
 </body>
+<script>
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("header").innerHTML = data;
+
+    // ✅ AHORA SÍ existen los elementos
+    const btn = document.getElementById("menuBtn");
+    const menu = document.getElementById("menuMovil");
+
+    btn.onclick = () => {
+      menu.classList.toggle("activo");
+    };
+
+    menu.querySelectorAll("a").forEach(link => {
+      link.onclick = () => menu.classList.remove("activo");
+    });
+  });
+</script>
+
 </html>
+
