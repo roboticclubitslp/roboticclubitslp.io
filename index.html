@@ -95,7 +95,7 @@ nav ul li a:hover::after {
     flex-direction: column;
     gap: 6px;
     cursor: pointer;
-    z-index: 4001; /* 🔧 CLAVE */
+    z-index: 4001;
 }
 
 .menu-btn span {
@@ -117,7 +117,7 @@ nav ul li a:hover::after {
     gap: 35px;
     transform: translateX(100%);
     transition: transform 0.35s ease;
-    z-index: 4000; /* 🔧 SOBRE TODO */
+    z-index: 4000;
 }
 
 .menu-movil a {
@@ -203,6 +203,8 @@ h1 {
 
     body {
         background-attachment: scroll;
+        background-size: contain;      /* 🔧 CLAVE */
+        background-position: top center;
     }
 
     nav ul {
@@ -320,7 +322,3 @@ menu.querySelectorAll("a").forEach(link => {
 
 </body>
 </html>
-
-
-
-
