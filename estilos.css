@@ -6,20 +6,20 @@ body {
     min-height: 100vh;
     background: black;
     overflow-x: hidden;
-    position: relative;
+    background-color: #000;
 }
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: -1;
-
-    background:
+    background-image:
         linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-        url("fondo.jpg") center center no-repeat;
-
+        url("fondo.jpg");
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
 }
 
 
@@ -37,8 +37,8 @@ header {
 nav {
     max-width: 1300px;
     margin: auto;
-    height: 100%;               /* 🔴 CLAVE */
-    padding: 0 30px;            /* 🔴 MENOS PADDING */
+    height: 72px;              /* 🔒 altura fija */
+    padding: 0 30px;           /* sin padding vertical */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -51,12 +51,13 @@ nav {
     gap: 12px;
     color: #ff9f1a;
     font-weight: 600;
-    letter-spacing: 2px;
-    font-size: 20px;
+    letter-spacing: 3px;
+    font-size: 22px;
+    line-height: 1;             /* 🔒 evita saltos */
 }
 
 .logo img {
-    width: 60px;               /* 🔴 NO FORZAR ALTURA */
+    width: 60px;                /* 🔒 tamaño estable */
     height: auto;
 }
 
@@ -83,7 +84,7 @@ nav ul li a::after {
     height: 2px;
     background: #ff9f1a;
     left: 0;
-    bottom: -6px;
+    bottom: -5px;
     transition: 0.3s;
 }
 
@@ -100,24 +101,25 @@ nav ul li a:hover::after {
 }
 
 .menu-btn span {
-    width: 26px;
+    width: 28px;
     height: 3px;
     background: #ff9f1a;
+    border-radius: 2px;
 }
 
 /* ===== MENÚ MÓVIL ===== */
 .menu-movil {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.95);
+    background: rgba(0,0,0,0.96);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 35px;
     transform: translateX(100%);
-    transition: 0.35s;
-    z-index: 999;
+    transition: transform 0.35s ease;
+    z-index: 4000;
 }
 
 .menu-movil.activo {
@@ -127,6 +129,7 @@ nav ul li a:hover::after {
 .menu-movil a {
     color: #ff9f1a;
     font-size: 22px;
+    letter-spacing: 3px;
     text-decoration: none;
 }
 
@@ -230,6 +233,7 @@ h1 {
     letter-spacing: 2px;
     user-select: none;
 }
+
 
 
 
