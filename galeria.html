@@ -2,8 +2,6 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-
-<!-- ✅ VIEWPORT (SOLO PARA CELULAR, PC NO CAMBIA) -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Galería | Robotic Club</title>
@@ -86,6 +84,48 @@ nav ul li a:hover::after {
     width: 100%;
 }
 
+/* ===== BOTÓN HAMBURGUESA ===== */
+.menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 4001;
+}
+
+.menu-btn span {
+    width: 28px;
+    height: 3px;
+    background: #ff9f1a;
+    border-radius: 2px;
+}
+
+/* ===== MENÚ MÓVIL ===== */
+.menu-movil {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.96);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+    z-index: 4000;
+}
+
+.menu-movil a {
+    color: #ff9f1a;
+    font-size: 22px;
+    letter-spacing: 3px;
+    text-decoration: none;
+}
+
+.menu-movil.activo {
+    transform: translateX(0);
+}
+
 /* ===== CONTENIDO ===== */
 main {
     padding-top: 140px;
@@ -143,12 +183,6 @@ h1 {
     max-height: 85vh;
     object-fit: contain;
     border-radius: 15px;
-    animation: zoomFade 0.35s ease;
-}
-
-@keyframes zoomFade {
-    from { transform: scale(0.85); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
 }
 
 /* ===== FLECHAS ===== */
@@ -161,39 +195,19 @@ h1 {
     cursor: pointer;
     user-select: none;
     padding: 15px;
-    text-shadow: 0 0 18px rgba(255,159,26,0.9);
-    transition: 0.2s;
-}
-
-.flecha:hover {
-    transform: translateY(-50%) scale(1.25);
-    color: #ffd28a;
 }
 
 .flecha.izq { left: 30px; }
 .flecha.der { right: 30px; }
 
-/* ===== TITULO + CONTADOR ===== */
-.titulo-foto {
-    position: absolute;
-    top: 30px;
-    color: #ff9f1a;
-    letter-spacing: 2px;
-    font-size: 16px;
-}
-
 .contador {
     position: absolute;
     bottom: 30px;
     color: #ff9f1a;
-    letter-spacing: 2px;
     font-size: 14px;
-    opacity: 0.85;
 }
 
-/* ================================================= */
-/* ===== SOLO CELULAR (PC NO SE MODIFICA) ===== */
-/* ================================================= */
+/* ===== SOLO CELULAR ===== */
 @media (max-width: 768px) {
 
     body {
@@ -204,40 +218,16 @@ h1 {
         display: none;
     }
 
+    .menu-btn {
+        display: flex;
+    }
+
     main {
         padding-top: 120px;
     }
 
-    h1 {
-        letter-spacing: 3px;
-    }
-
-    .galeria {
-        gap: 18px;
-        padding: 30px 15px;
-    }
-
-    .galeria img {
-        height: 160px;
-    }
-
-    .flecha {
-        font-size: 45px;
-        padding: 12px;
-    }
-
     .flecha.izq { left: 10px; }
     .flecha.der { right: 10px; }
-
-    .titulo-foto {
-        top: 15px;
-        font-size: 14px;
-    }
-
-    .contador {
-        bottom: 15px;
-        font-size: 13px;
-    }
 }
 </style>
 </head>
@@ -250,55 +240,77 @@ h1 {
         ROBOTIC CLUB
         <img src="pato.gif" alt="Pato bailando">
     </div>
+
     <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="galeria.html">Galería</a></li>
         <li><a href="eventos.html">Eventos</a></li>
         <li><a href="equipo.html">Equipo</a></li>
     </ul>
+
+    <div class="menu-btn" id="menuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 </nav>
 </header>
+
+<div class="menu-movil" id="menuMovil">
+    <a href="index.html">Inicio</a>
+    <a href="galeria.html">Galería</a>
+    <a href="eventos.html">Eventos</a>
+    <a href="equipo.html">Equipo</a>
+</div>
 
 <main>
 <h1>Galería</h1>
 
-<div class="galeria" id="galeria">
-    <img src="foto1.jpg" loading="lazy">
-    <img src="foto2.jpg" loading="lazy">
-    <img src="foto3.jpg" loading="lazy">
-    <img src="foto4.jpg" loading="lazy">
-    <img src="foto5.jpg" loading="lazy">
-    <img src="foto6.jpg" loading="lazy">
-    <img src="foto7.jpeg" loading="lazy">
-    <img src="foto8.jpeg" loading="lazy">
-    <img src="foto9.jpeg" loading="lazy">
-    <img src="foto10.jpeg" loading="lazy">
-    <img src="foto11.jpeg" loading="lazy">
-    <img src="foto12.jpeg" loading="lazy">
-    <img src="foto13.jpeg" loading="lazy">
-    <img src="foto14.jpeg" loading="lazy">
-    <img src="foto15.jpeg" loading="lazy">
-    <img src="foto16.jpeg" loading="lazy">
-    <img src="foto17.jpeg" loading="lazy">
-    <img src="foto18.jpeg" loading="lazy">
-    <img src="foto19.jpeg" loading="lazy">
-    <img src="foto20.jpeg" loading="lazy">
-    <img src="foto21.jpeg" loading="lazy">
-    <img src="foto22.jpeg" loading="lazy">
-    <img src="foto23.jpeg" loading="lazy">
+<div class="galeria">
+    <img src="foto1.jpg">
+    <img src="foto2.jpg">
+    <img src="foto3.jpg">
+    <img src="foto4.jpg">
+    <img src="foto5.jpg">
+    <img src="foto6.jpg">
+    <img src="foto7.jpeg">
+    <img src="foto8.jpeg">
+    <img src="foto9.jpeg">
+    <img src="foto10.jpeg">
+    <img src="foto11.jpeg">
+    <img src="foto12.jpeg">
+    <img src="foto13.jpeg">
+    <img src="foto14.jpeg">
+    <img src="foto15.jpeg">
+    <img src="foto16.jpeg">
+    <img src="foto17.jpeg">
+    <img src="foto18.jpeg">
+    <img src="foto19.jpeg">
+    <img src="foto20.jpeg">
+    <img src="foto21.jpeg">
+    <img src="foto22.jpeg">
+    <img src="foto23.jpeg">
 </div>
 </main>
 
-<!-- POPUP -->
 <div class="popup" id="popup">
     <span class="flecha izq" onclick="anterior()">&#10094;</span>
-    <div class="titulo-foto" id="tituloFoto"></div>
     <img id="popupImg">
     <div class="contador" id="contador"></div>
     <span class="flecha der" onclick="siguiente()">&#10095;</span>
 </div>
 
 <script>
+/* ===== MENÚ MÓVIL ===== */
+const btn = document.getElementById("menuBtn");
+const menu = document.getElementById("menuMovil");
+
+btn.onclick = () => menu.classList.toggle("activo");
+menu.querySelectorAll("a").forEach(a => {
+    a.onclick = () => menu.classList.remove("activo");
+});
+
+/* ===== GALERÍA ===== */
 const imagenes = document.querySelectorAll(".galeria img");
 const popup = document.getElementById("popup");
 const popupImg = document.getElementById("popupImg");
@@ -318,10 +330,6 @@ function mostrar() {
     popup.style.visibility = "visible";
 }
 
-function cerrar() {
-    popup.style.visibility = "hidden";
-}
-
 function siguiente() {
     indice = (indice + 1) % imagenes.length;
     mostrar();
@@ -333,18 +341,10 @@ function anterior() {
 }
 
 popup.onclick = e => {
-    if (e.target === popup) cerrar();
+    if (e.target === popup) popup.style.visibility = "hidden";
 };
 
-document.addEventListener("keydown", e => {
-    if (popup.style.visibility === "visible") {
-        if (e.key === "ArrowRight") siguiente();
-        if (e.key === "ArrowLeft") anterior();
-        if (e.key === "Escape") cerrar();
-    }
-});
-
-/* ===== SWIPE MÓVIL ===== */
+/* ===== SWIPE ===== */
 let inicioX = 0;
 popup.addEventListener("touchstart", e => {
     inicioX = e.changedTouches[0].screenX;
@@ -359,5 +359,3 @@ popup.addEventListener("touchend", e => {
 
 </body>
 </html>
-
-
