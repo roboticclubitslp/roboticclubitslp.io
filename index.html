@@ -213,8 +213,9 @@ h1 {
 @media (max-width: 768px) {
 
     body {
-
-        background-position: center top;  /* centrada */
+        background-attachment: scroll;     /* se mueve con el dedo */
+        background-size: auto 100vh;        /* 🔒 tamaño estable */
+        background-position: center top;   /* centrada */
         background-repeat: no-repeat;
     }
 
@@ -249,6 +250,7 @@ h1 {
         padding: 35px 20px;
     }
 }
+
 
 </style>
 </head>
@@ -334,5 +336,3 @@ menu.querySelectorAll("a").forEach(link => {
 
 </body>
 </html>
-
-
