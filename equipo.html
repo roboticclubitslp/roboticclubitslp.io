@@ -76,9 +76,22 @@
 
 </div>
 </main>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("menuBtn");
+    const menu = document.getElementById("menuMovil");
+
+    if (btn && menu) {
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("activo");
+        });
+    }
+});
+</script>
 
 </body>
 </html>
+
 
 
 
