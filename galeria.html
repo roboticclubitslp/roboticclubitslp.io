@@ -2,6 +2,10 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+
+<!-- ✅ VIEWPORT (SOLO PARA CELULAR, PC NO CAMBIA) -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Galería | Robotic Club</title>
 
 <link rel="icon" type="image/png" href="icono.png">
@@ -93,7 +97,7 @@ main {
 h1 {
     font-size: clamp(32px, 6vw, 52px);
     letter-spacing: 4px;
-    color: #ff9f1a;
+    color: white;
     text-shadow: 0 0 15px rgba(255,159,26,0.6);
 }
 
@@ -185,6 +189,55 @@ h1 {
     letter-spacing: 2px;
     font-size: 14px;
     opacity: 0.85;
+}
+
+/* ================================================= */
+/* ===== SOLO CELULAR (PC NO SE MODIFICA) ===== */
+/* ================================================= */
+@media (max-width: 768px) {
+
+    body {
+        background-attachment: scroll;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    main {
+        padding-top: 120px;
+    }
+
+    h1 {
+        letter-spacing: 3px;
+    }
+
+    .galeria {
+        gap: 18px;
+        padding: 30px 15px;
+    }
+
+    .galeria img {
+        height: 160px;
+    }
+
+    .flecha {
+        font-size: 45px;
+        padding: 12px;
+    }
+
+    .flecha.izq { left: 10px; }
+    .flecha.der { right: 10px; }
+
+    .titulo-foto {
+        top: 15px;
+        font-size: 14px;
+    }
+
+    .contador {
+        bottom: 15px;
+        font-size: 13px;
+    }
 }
 </style>
 </head>
@@ -306,3 +359,5 @@ popup.addEventListener("touchend", e => {
 
 </body>
 </html>
+
+
