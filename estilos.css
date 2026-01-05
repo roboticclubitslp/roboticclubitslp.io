@@ -308,36 +308,106 @@ h1 {
     .popup img.zoom {
         transform: scale(1.4);
     }
-    .video-box {
-        margin: 20px auto;
-        border-radius: 14px;
-    }
+}
+/* ==================================================
+   AJUSTES SOLO PARA EVENTOS (DESKTOP SEGURO)
+   NO ROMPE GALERÍA NI MÓVIL
+================================================== */
 
-    .video-box video {
-        aspect-ratio: 16 / 9;
-        height: auto;
-        max-height: 220px; /* 🔑 clave */
-        object-fit: cover;
-    }
-    .info,
-    .redes {
-        margin: 30px 15px;
-        padding: 25px 20px;
-    }
-
-    .info h2,
-    .redes h2 {
-        font-size: 22px;
-        letter-spacing: 2px;
-    }
-
-    .info p {
-        font-size: 14px;
-        line-height: 1.6;
-    }
-    h1 {
-        font-size: 32px;
-        letter-spacing: 3px;
-    }
+/* Contenedor general de eventos */
+.evento {
+    max-width: 1000px;
+    margin: 0 auto 60px auto;
+    padding: 30px 35px;
+    background: rgba(0,0,0,0.45);
+    border-left: 5px solid #ff9f1a;
+    border-radius: 18px;
 }
 
+/* Título del evento */
+.evento h2 {
+    margin-top: 0;
+    color: #ff9f1a;
+    letter-spacing: 2px;
+}
+
+/* Texto del evento */
+.evento p {
+    max-width: 800px;
+    line-height: 1.7;
+    color: #e0e0e0;
+}
+
+/* Galería dentro de eventos */
+.fotos-evento {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+}
+
+/* Imágenes de eventos (DESKTOP CONTROLADO) */
+.fotos-evento img {
+    width: 100%;
+    max-height: 220px;          /* 🔒 límite visual */
+    object-fit: contain;       /* ✅ se ve completa */
+    background: rgba(0,0,0,0.45);
+    padding: 10px;
+    border-radius: 14px;
+    box-shadow: 0 0 15px rgba(255,159,26,0.4);
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+
+.fotos-evento img:hover {
+    transform: scale(1.05);
+}
+/* ===== EVENTOS – ALINEACIÓN DE TEXTO ===== */
+.evento {
+    text-align: center;
+}
+
+.evento h2 {
+    text-align: center;
+}
+
+.evento p {
+    margin: 10px auto 0;
+    text-align: center;
+}
+/* ===== VISOR EVENTOS (CORREGIDO) ===== */
+#visor {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    overflow: hidden;
+}
+#visor img {
+    max-width: 90vw;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+    box-shadow: 0 0 30px rgba(255,159,26,0.6);
+}
+
+
+/* ===== SOLO CELULAR ===== */
+@media (max-width: 768px) {
+
+    .evento {
+        padding: 25px 20px;
+        margin-bottom: 45px;
+    }
+
+    .fotos-evento img {
+        height: auto;           /* 🔓 en celular se adapta */
+        object-fit: contain;
+    }
+}
