@@ -14,9 +14,10 @@ body {
     margin: 0;
     font-family: 'Roboto Mono', monospace;
     background:
-        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
         url("fondo.jpg") center / cover no-repeat fixed;
     color: #ededed;
+    min-height: 100vh;
 }
 
 /* ===== MENÚ ===== */
@@ -41,11 +42,11 @@ nav {
 .logo {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     color: #ff9f1a;
     font-weight: 600;
     letter-spacing: 2px;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .logo img {
@@ -140,6 +141,13 @@ h1 {
     text-shadow: 0 0 15px rgba(255,159,26,0.6);
 }
 
+/* ===== GLOW REUTILIZABLE ===== */
+.glow-orange {
+    box-shadow:
+        0 0 20px rgba(255,159,26,0.45),
+        0 0 45px rgba(255,159,26,0.25);
+}
+
 /* ===== GALERÍA ===== */
 .galeria {
     display: grid;
@@ -153,15 +161,20 @@ h1 {
     height: 180px;
     object-fit: cover;
     border-radius: 15px;
-    box-shadow: 0 0 20px rgba(255,159,26,0.4);
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+
+    box-shadow:
+        0 0 20px rgba(255,159,26,0.45),
+        0 0 45px rgba(255,159,26,0.25);
 }
 
 .galeria img:hover {
     transform: scale(1.06);
     filter: brightness(1.15);
-    box-shadow: 0 0 35px rgba(255,159,26,0.7);
+    box-shadow:
+        0 0 35px rgba(255,159,26,0.7),
+        0 0 70px rgba(255,159,26,0.35);
 }
 
 /* ===== POPUP ===== */
@@ -181,7 +194,11 @@ h1 {
     max-width: 900px;
     max-height: 85vh;
     object-fit: contain;
-    border-radius: 15px;
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 30px rgba(255,159,26,0.6),
+        0 0 80px rgba(255,159,26,0.35);
 }
 
 /* ===== FLECHAS ===== */
@@ -300,7 +317,6 @@ h1 {
 </div>
 
 <script>
-/* ===== MENÚ MÓVIL ===== */
 const btn = document.getElementById("menuBtn");
 const menu = document.getElementById("menuMovil");
 
@@ -309,7 +325,6 @@ menu.querySelectorAll("a").forEach(a => {
     a.onclick = () => menu.classList.remove("activo");
 });
 
-/* ===== GALERÍA ===== */
 const imagenes = document.querySelectorAll(".galeria img");
 const popup = document.getElementById("popup");
 const popupImg = document.getElementById("popupImg");
@@ -343,7 +358,6 @@ popup.onclick = e => {
     if (e.target === popup) popup.style.visibility = "hidden";
 };
 
-/* ===== SWIPE ===== */
 let inicioX = 0;
 popup.addEventListener("touchstart", e => {
     inicioX = e.changedTouches[0].screenX;
@@ -358,6 +372,3 @@ popup.addEventListener("touchend", e => {
 
 </body>
 </html>
-
-
-
