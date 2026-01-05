@@ -7,268 +7,14 @@
 <title>Robotic Club</title>
 <link rel="icon" type="image/png" href="icono.png">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-html {
-    scroll-behavior: smooth;
-}
-
-/* ===== FONDO PROFESIONAL ESTABLE ===== */
-body {
-    margin: 0;
-    font-family: 'Roboto Mono', monospace;
-    color: #ededed;
-    position: relative;
-    overflow-x: hidden;
-    background-color: #000; /* ✅ NEGRO REAL */
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image:
-        linear-gradient(
-            rgba(0,0,0,0.55),
-            rgba(0,0,0,0.55)
-        ),
-        url("fondo.jpg");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    z-index: -1;
-}
-
-
-/* ===== MENÚ ===== */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.75);
-    backdrop-filter: blur(8px);
-    z-index: 1000;
-}
-
-nav {
-    max-width: 1300px;
-    margin: auto;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #ff9f1a;
-    font-weight: 600;
-    letter-spacing: 3px;
-    font-size: 22px;
-}
-
-.logo img {
-    width: 100px;
-    height: 40px;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-    padding: 0;
-    margin: 0;
-}
-
-nav ul li a {
-    color: #ededed;
-    text-decoration: none;
-    font-size: 15px;
-    position: relative;
-}
-
-nav ul li a::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    background: #ff9f1a;
-    left: 0;
-    bottom: -5px;
-    transition: width 0.3s;
-}
-
-nav ul li a:hover::after {
-    width: 100%;
-}
-
-/* ===== BOTÓN HAMBURGUESA ===== */
-.menu-btn {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-    cursor: pointer;
-    z-index: 4001;
-}
-
-.menu-btn span {
-    width: 28px;
-    height: 3px;
-    background: #ff9f1a;
-    border-radius: 2px;
-}
-
-/* ===== MENÚ MÓVIL ===== */
-.menu-movil {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.96);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 35px;
-    transform: translateX(100%);
-    transition: transform 0.35s ease;
-    z-index: 4000;
-}
-
-.menu-movil a {
-    color: #ff9f1a;
-    font-size: 22px;
-    letter-spacing: 3px;
-    text-decoration: none;
-}
-
-.menu-movil.activo {
-    transform: translateX(0);
-}
-
-/* ===== CONTENIDO ===== */
-main {
-    padding-top: 140px;
-    text-align: center;
-}
-
-h1 {
-    font-size: clamp(38px, 7vw, 64px);
-    letter-spacing: 6px;
-    color: white;
-}
-
-/* ===== VIDEO ===== */
-.video-box {
-    max-width: 900px;
-    margin: 50px auto;
-    border-radius: 20px;
-    overflow: hidden;
-        /* 🔥 DIFUMINADO NARANJA COMO GALERÍA */
-    box-shadow:
-        0 0 20px rgba(255,159,26,0.4),
-        0 0 40px rgba(255,159,26,0.15);
-
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.video-box video {
-    width: 100%;
-    display: block;
-}
-
-/* ===== SECCIONES ===== */
-.info,
-.redes {
-    max-width: 900px;
-    margin: 80px auto;
-    padding: 45px 35px;
-    background: rgba(0,0,0,0.55);
-    border-radius: 18px;
-        /* 🔥 DIFUMINADO NARANJA COMO GALERÍA */
-    box-shadow:
-        0 0 20px rgba(255,159,26,0.4),
-        0 0 40px rgba(255,159,26,0.15);
-
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.info h2,
-.redes h2 {
-    font-size: 28px;
-    letter-spacing: 3px;
-    color: #ff9f1a;
-}
-
-.info p {
-    font-size: 16px;
-    line-height: 1.8;
-}
-
-/* ===== REDES ===== */
-.redes-contenedor {
-    display: flex;
-    justify-content: center;
-    gap: 35px;
-}
-
-.redes a {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    border: 2px solid #ff9f1a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    color: #ff9f1a;
-    text-decoration: none;
-}
-
-/* ===== SOLO CELULAR (CORRECCIÓN FINAL) ===== */
-@media (max-width: 768px) {
-
-    body::before {
-        background-size: contain;
-        background-position: center center;
-        background-attachment: scroll; /* se mueve con el dedo */
-    }
-
-    nav ul {
-        display: none;
-    }
-
-    .menu-btn {
-        display: flex;
-    }
-
-    .logo {
-        font-size: 18px;
-        letter-spacing: 2px;
-    }
-
-    .logo img {
-        width: 55px;
-    }
-
-    main {
-        padding-top: 120px;
-    }
-
-    h1 {
-        letter-spacing: 3px;
-    }
-
-    .info,
-    .redes {
-        margin: 50px 15px;
-        padding: 35px 20px;
-    }
-}
-</style>
+<link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>
@@ -314,24 +60,24 @@ h1 {
 
 <section class="info">
     <h2>Misión</h2>
-    <p>Inspirar y capacitar a los estudiantes para que desarrollen habilidades tecnológicas y de pensamiento crítico, a través de experiencias prácticas que integran la robótica con otras disciplinas de la ciencia y la ingeniería.</p>
+    <p>Inspirar y capacitar a los estudiantes para desarrollar habilidades tecnológicas y de pensamiento crítico.</p>
 </section>
 
 <section class="info">
     <h2>Objetivo</h2>
-    <p>Fomentar el interés por la ciencia y la ingeniería, motivando a los participantes a investigar, experimentar y trabajar en equipo, promoviendo la participación en concursos de robótica.</p>
+    <p>Fomentar el interés por la ciencia y la ingeniería mediante la robótica.</p>
 </section>
 
 <section class="info">
     <h2>Visión</h2>
-    <p>Convertirnos en un referente de innovación tecnológica dentro de la institución y la comunidad, formando estudiantes preparados para enfrentar los retos del futuro.</p>
+    <p>Ser un referente de innovación tecnológica en la comunidad.</p>
 </section>
 
 <section class="redes">
     <h2>Síguenos</h2>
     <div class="redes-contenedor">
-        <a href="https://www.facebook.com/profile.php?id=61573092863989"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/roboticclubitslp/"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
 </section>
 
@@ -352,4 +98,3 @@ menu.querySelectorAll("a").forEach(link => {
 
 </body>
 </html>
-
