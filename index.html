@@ -16,13 +16,24 @@ html {
     scroll-behavior: smooth;
 }
 
+/* ===== FONDO PROFESIONAL ===== */
 body {
     margin: 0;
     font-family: 'Roboto Mono', monospace;
+    color: #ededed;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
     background:
         linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-        url("fondo.jpg") center / cover no-repeat fixed;
-    color: #ededed;
+        url("fondo.jpg") center center / cover no-repeat;
+    z-index: -1;
+    will-change: transform;
 }
 
 /* ===== MENÚ ===== */
@@ -198,13 +209,12 @@ h1 {
     text-decoration: none;
 }
 
-/* ===== SOLO CELULAR ===== */
+/* ===== SOLO CELULAR (SIN ROMPER PC) ===== */
 @media (max-width: 768px) {
 
-    body {
-        background-attachment: scroll;
-        background-size: contain;      /* 🔧 CLAVE */
-        background-position: top center;
+    body::before {
+        position: absolute;
+        background-position: center top;
     }
 
     nav ul {
@@ -300,8 +310,8 @@ h1 {
 <section class="redes">
     <h2>Síguenos</h2>
     <div class="redes-contenedor">
-        <a href="https://www.facebook.com/profile.php?id=61573092863989"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/roboticclubitslp/"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
 </section>
 
@@ -322,4 +332,3 @@ menu.querySelectorAll("a").forEach(link => {
 
 </body>
 </html>
-
