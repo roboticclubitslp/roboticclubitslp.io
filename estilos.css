@@ -1,0 +1,222 @@
+/* ===== BASE ===== */
+body {
+    margin: 0;
+    font-family: 'Roboto Mono', monospace;
+    color: #ededed;
+    min-height: 100vh;
+    background: black;
+    overflow-x: hidden;
+}
+
+/* ===== FONDO ===== */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url("fondo.jpg") center center / cover no-repeat;
+    z-index: -1;
+}
+
+/* ===== HEADER ===== */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;               /* 🔴 ALTURA FIJA */
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+}
+
+nav {
+    max-width: 1300px;
+    margin: auto;
+    height: 100%;               /* 🔴 CLAVE */
+    padding: 0 30px;            /* 🔴 MENOS PADDING */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ===== LOGO ===== */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ff9f1a;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 20px;
+}
+
+.logo img {
+    width: 60px;               /* 🔴 NO FORZAR ALTURA */
+    height: auto;
+}
+
+/* ===== MENÚ ===== */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: #ededed;
+    text-decoration: none;
+    font-size: 15px;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #ff9f1a;
+    left: 0;
+    bottom: -6px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* ===== BOTÓN MÓVIL ===== */
+.menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.menu-btn span {
+    width: 26px;
+    height: 3px;
+    background: #ff9f1a;
+}
+
+/* ===== MENÚ MÓVIL ===== */
+.menu-movil {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    transform: translateX(100%);
+    transition: 0.35s;
+    z-index: 999;
+}
+
+.menu-movil.activo {
+    transform: translateX(0);
+}
+
+.menu-movil a {
+    color: #ff9f1a;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+/* ===== CONTENIDO ===== */
+main {
+    padding-top: 140px;        /* 🔴 AJUSTE EXACTO */
+    max-width: 1300px;
+    margin: auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: clamp(32px, 6vw, 52px);
+    letter-spacing: 4px;
+    text-shadow: 0 0 15px rgba(255,159,26,0.6);
+}
+
+/* ===== GALERÍA ===== */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    padding: 40px 20px;
+}
+
+.galeria img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: 0.3s;
+    box-shadow:
+        0 0 20px rgba(255,159,26,0.45),
+        0 0 45px rgba(255,159,26,0.25);
+}
+
+.galeria img:hover {
+    transform: scale(1.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    nav ul { display: none; }
+    .menu-btn { display: flex; }
+    main { padding-top: 100px; }
+}
+/* ===== ZOOM ===== */
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    z-index: 2000;
+    touch-action: pan-y;
+
+
+}
+
+/* IMAGEN */
+.popup img {
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 18px;
+    margin: 0;
+    display: block;
+
+    box-shadow:
+        0 0 30px rgba(255,159,26,0.6),
+        0 0 80px rgba(255,159,26,0.35);
+
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+}
+
+.popup img.zoom {
+    transform: scale(1.8);
+    cursor: zoom-out;
+}
+
+/* ===== CONTADOR ABAJO (CORRECTO) ===== */
+.popup .contador {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ff9f1a;
+    font-size: 14px;
+    letter-spacing: 2px;
+    user-select: none;
+}
+
+
