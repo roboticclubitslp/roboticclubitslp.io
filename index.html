@@ -23,17 +23,25 @@ body {
     color: #ededed;
     position: relative;
     overflow-x: hidden;
+    background-color: #000; /* ✅ NEGRO REAL */
 }
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background:
-        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-        url("fondo.jpg") center center / cover no-repeat;
+    background-image:
+        linear-gradient(
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.55)
+        ),
+        url("fondo.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
     z-index: -1;
 }
+
 
 /* ===== MENÚ ===== */
 header {
