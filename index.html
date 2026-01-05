@@ -167,6 +167,12 @@ h1 {
     margin: 50px auto;
     border-radius: 20px;
     overflow: hidden;
+        /* 🔥 DIFUMINADO NARANJA COMO GALERÍA */
+    box-shadow:
+        0 0 20px rgba(255,159,26,0.4),
+        0 0 40px rgba(255,159,26,0.15);
+
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .video-box video {
@@ -182,6 +188,12 @@ h1 {
     padding: 45px 35px;
     background: rgba(0,0,0,0.55);
     border-radius: 18px;
+        /* 🔥 DIFUMINADO NARANJA COMO GALERÍA */
+    box-shadow:
+        0 0 20px rgba(255,159,26,0.4),
+        0 0 40px rgba(255,159,26,0.15);
+
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .info h2,
@@ -222,6 +234,7 @@ h1 {
     body::before {
         background-size: contain;
         background-position: center center;
+        background-attachment: scroll; /* se mueve con el dedo */
     }
 
     nav ul {
