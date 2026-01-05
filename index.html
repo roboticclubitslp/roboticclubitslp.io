@@ -2,6 +2,10 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+
+<!-- SOLO esto es obligatorio para celular -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Robotic Club</title>
 
 <link rel="icon" type="image/png" href="icono.png">
@@ -185,10 +189,30 @@ h1 {
     box-shadow: 0 0 30px rgba(255,159,26,0.6);
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== SOLO CELULAR (PC NO SE TOCA) ===== */
 @media (max-width: 768px) {
+
+    /* Evita bugs de fondo en móvil */
+    body {
+        background-attachment: scroll;
+    }
+
     nav ul {
         display: none;
+    }
+
+    .logo {
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
+    .logo img {
+        width: 55px;
+        height: auto;
+    }
+
+    main {
+        padding-top: 120px;
     }
 
     h1 {
@@ -197,6 +221,7 @@ h1 {
 
     .info,
     .redes {
+        margin: 50px 15px;
         padding: 35px 20px;
     }
 }
@@ -225,7 +250,7 @@ h1 {
 <h1>ROBOTIC CLUB</h1>
 
 <div class="video-box">
-    <video autoplay loop muted controls>
+    <video autoplay loop muted controls playsinline>
         <source src="video_!.mp4" type="video/mp4">
         Tu navegador no soporta video.
     </video>
@@ -258,10 +283,10 @@ h1 {
 <section class="redes">
     <h2>Síguenos</h2>
     <div class="redes-contenedor">
-        <a href="https://www.facebook.com/profile.php?id=61573092863989" title="Facebook">
+        <a href="https://www.facebook.com/profile.php?id=61573092863989">
             <i class="fab fa-facebook-f"></i>
         </a>
-        <a href="https://www.instagram.com/roboticclubitslp/" title="Instagram">
+        <a href="https://www.instagram.com/roboticclubitslp/">
             <i class="fab fa-instagram"></i>
         </a>
     </div>
