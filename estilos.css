@@ -6,29 +6,26 @@ body {
     min-height: 100vh;
     background: black;
     overflow-x: hidden;
-    background-color: #000;
+    position: relative;
 }
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background-image:
-        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-        url("fondo.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     z-index: -1;
+    background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url("fondo.jpg") center center no-repeat;
+    background-size: cover;
 }
-
 
 /* ===== HEADER ===== */
 header {
     position: fixed;
     top: 0;
     width: 100%;
-    height: 80px;               /* 🔴 ALTURA FIJA */
+    height: 80px;
     background: rgba(0,0,0,0.75);
     backdrop-filter: blur(8px);
     z-index: 1000;
@@ -37,8 +34,8 @@ header {
 nav {
     max-width: 1300px;
     margin: auto;
-    height: 72px;              /* 🔒 altura fija */
-    padding: 0 30px;           /* sin padding vertical */
+    height: 100%;
+    padding: 0 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -51,14 +48,12 @@ nav {
     gap: 12px;
     color: #ff9f1a;
     font-weight: 600;
-    letter-spacing: 3px;
-    font-size: 22px;
-    line-height: 1;             /* 🔒 evita saltos */
+    letter-spacing: 2px;
+    font-size: 20px;
 }
 
 .logo img {
-    width: 60px;                /* 🔒 tamaño estable */
-    height: auto;
+    width: 60px;
 }
 
 /* ===== MENÚ ===== */
@@ -84,7 +79,7 @@ nav ul li a::after {
     height: 2px;
     background: #ff9f1a;
     left: 0;
-    bottom: -5px;
+    bottom: -6px;
     transition: 0.3s;
 }
 
@@ -92,7 +87,7 @@ nav ul li a:hover::after {
     width: 100%;
 }
 
-/* ===== BOTÓN MÓVIL ===== */
+/* ===== HAMBURGUESA ===== */
 .menu-btn {
     display: none;
     flex-direction: column;
@@ -101,17 +96,16 @@ nav ul li a:hover::after {
 }
 
 .menu-btn span {
-    width: 28px;
+    width: 26px;
     height: 3px;
     background: #ff9f1a;
-    border-radius: 2px;
 }
 
 /* ===== MENÚ MÓVIL ===== */
 .menu-movil {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.96);
+    background: rgba(0,0,0,0.95);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -119,7 +113,7 @@ nav ul li a:hover::after {
     gap: 35px;
     transform: translateX(100%);
     transition: transform 0.35s ease;
-    z-index: 4000;
+    z-index: 3000;
 }
 
 .menu-movil.activo {
@@ -129,25 +123,100 @@ nav ul li a:hover::after {
 .menu-movil a {
     color: #ff9f1a;
     font-size: 22px;
-    letter-spacing: 3px;
     text-decoration: none;
 }
 
 /* ===== CONTENIDO ===== */
 main {
-    padding-top: 140px;        /* 🔴 AJUSTE EXACTO */
-    max-width: 1300px;
-    margin: auto;
+    padding-top: 120px;
     text-align: center;
 }
 
 h1 {
-    font-size: clamp(32px, 6vw, 52px);
-    letter-spacing: 4px;
-    text-shadow: 0 0 15px rgba(255,159,26,0.6);
+    font-size: clamp(38px, 7vw, 64px);
+    letter-spacing: 6px;
 }
 
-/* ===== GALERÍA ===== */
+/* ===== VIDEO (PROPORCIONAL) ===== */
+.video-box {
+    max-width: 900px;
+    margin: 60px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    box-shadow:
+        0 0 20px rgba(255,159,26,0.4),
+        0 0 40px rgba(255,159,26,0.15);
+}
+
+.video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ===== SECCIONES ===== */
+.info,
+.redes {
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 45px 35px;
+    background: rgba(0,0,0,0.55);
+    border-radius: 18px;
+    box-shadow:
+        0 0 20px rgba(255,159,26,0.4),
+        0 0 40px rgba(255,159,26,0.15);
+}
+
+.info h2,
+.redes h2 {
+    font-size: 28px;
+    letter-spacing: 3px;
+    color: #ff9f1a;
+}
+
+.info p {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* ===== REDES ===== */
+.redes-contenedor {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+}
+
+.redes a {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 2px solid #ff9f1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    color: #ff9f1a;
+    text-decoration: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    nav ul { display: none; }
+    .menu-btn { display: flex; }
+    main { padding-top: 110px; }
+
+    body::before {
+        background-size: contain;
+        background-position: center;
+        background-attachment: scroll;
+    }
+}
+/* ===================================================
+   ===== GALERÍA (ESTILO ORIGINAL RESTAURADO) =====
+   =================================================== */
+
 .galeria {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -155,36 +224,25 @@ h1 {
     padding: 40px 20px;
 }
 
+/* MARCO + SOMBRA */
 .galeria img {
     width: 100%;
     height: 180px;
     object-fit: cover;
-    border-radius: 15px;
-    transition: 0.3s;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow:
         0 0 20px rgba(255,159,26,0.45),
         0 0 45px rgba(255,159,26,0.25);
 }
 
+/* HOVER */
 .galeria img:hover {
     transform: scale(1.05);
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-    nav ul { display: none; }
-    .menu-btn { display: flex; }
-    main { padding-top: 100px; }
-}
-@media (max-width: 768px) {
-    body::before {
-        background-size: contain;
-        background-position: center center;
-        background-attachment: scroll;
-    }
-}
-
-/* ===== ZOOM ===== */
+/* ===== POPUP ===== */
 .popup {
     position: fixed;
     inset: 0;
@@ -193,36 +251,43 @@ h1 {
     justify-content: center;
     align-items: center;
     visibility: hidden;
-    z-index: 2000;
-    touch-action: pan-y;
-
-
+    z-index: 2500;
 }
 
-/* IMAGEN */
+/* IMAGEN POPUP */
 .popup img {
     max-width: 90%;
     max-height: 85vh;
     object-fit: contain;
     border-radius: 18px;
-    margin: 0;
-    display: block;
-
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
     box-shadow:
         0 0 30px rgba(255,159,26,0.6),
         0 0 80px rgba(255,159,26,0.35);
-
-    cursor: zoom-in;
-    transition: transform 0.3s ease;
-    transform-origin: center center;
 }
 
+/* ZOOM */
 .popup img.zoom {
     transform: scale(1.8);
     cursor: zoom-out;
 }
 
-/* ===== CONTADOR ABAJO (CORRECTO) ===== */
+/* ===== FLECHAS ===== */
+.popup .flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: #ff9f1a;
+    cursor: pointer;
+    user-select: none;
+}
+
+.popup .izq { left: 30px; }
+.popup .der { right: 30px; }
+
+/* ===== CONTADOR ABAJO ===== */
 .popup .contador {
     position: absolute;
     bottom: 30px;
@@ -234,6 +299,14 @@ h1 {
     user-select: none;
 }
 
+/* ===== MÓVIL ===== */
+@media (max-width: 768px) {
+    .galeria img {
+        height: 160px;
+    }
 
-
+    .popup img.zoom {
+        transform: scale(1.4);
+    }
+}
 
