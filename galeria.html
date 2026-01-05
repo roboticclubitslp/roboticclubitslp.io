@@ -10,159 +10,140 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="estilos.css">
 </head>
-<script>
-fetch("header.html")
-    .then(res => res.text())
-    .then(html => {
-        document.getElementById("header").innerHTML = html;
-    });
-</script>
+
 <body>
 
 <!-- HEADER -->
 <div id="header"></div>
 
 <main>
-<h1>Galería</h1>
+    <h1>Galería</h1>
 
-<div class="galeria">
-    <img src="fotos/foto1.jpg">
-    <img src="fotos/foto2.jpg">
-    <img src="fotos/foto3.jpg">
-    <img src="fotos/foto4.jpg">
-    <img src="fotos/foto5.jpg">
-    <img src="fotos/foto6.jpg">
-    <img src="fotos/foto7.jpeg">
-    <img src="fotos/foto8.jpeg">
-    <img src="fotos/foto9.jpeg">
-    <img src="fotos/foto10.jpeg">
-    <img src="fotos/foto11.jpeg">
-    <img src="fotos/foto12.jpeg">
-    <img src="fotos/foto13.jpeg">
-    <img src="fotos/foto14.jpeg">
-    <img src="fotos/foto15.jpeg">
-    <img src="fotos/foto16.jpeg">
-    <img src="fotos/foto17.jpeg">
-    <img src="fotos/foto18.jpeg">
-    <img src="fotos/foto19.jpeg">
-    <img src="fotos/foto20.jpeg">
-    <img src="fotos/foto21.jpeg">
-    <img src="fotos/foto22.jpeg">
-    <img src="fotos/foto23.jpeg">
-</div>
-
+    <div class="galeria">
+        <img src="fotos/foto1.jpg">
+        <img src="fotos/foto2.jpg">
+        <img src="fotos/foto3.jpg">
+        <img src="fotos/foto4.jpg">
+        <img src="fotos/foto5.jpg">
+        <img src="fotos/foto6.jpg">
+        <img src="fotos/foto7.jpeg">
+        <img src="fotos/foto8.jpeg">
+        <img src="fotos/foto9.jpeg">
+        <img src="fotos/foto10.jpeg">
+        <img src="fotos/foto11.jpeg">
+        <img src="fotos/foto12.jpeg">
+        <img src="fotos/foto13.jpeg">
+        <img src="fotos/foto14.jpeg">
+        <img src="fotos/foto15.jpeg">
+        <img src="fotos/foto16.jpeg">
+        <img src="fotos/foto17.jpeg">
+        <img src="fotos/foto18.jpeg">
+        <img src="fotos/foto19.jpeg">
+        <img src="fotos/foto20.jpeg">
+        <img src="fotos/foto21.jpeg">
+        <img src="fotos/foto22.jpeg">
+        <img src="fotos/foto23.jpeg">
+    </div>
 </main>
 
+<!-- POPUP -->
 <div class="popup" id="popup">
-    <span class="flecha izq" onclick="anterior()">&#10094;</span>
+    <span class="flecha izq">&#10094;</span>
     <img id="popupImg">
     <div class="contador" id="contador"></div>
-    <span class="flecha der" onclick="siguiente()">&#10095;</span>
+    <span class="flecha der">&#10095;</span>
 </div>
 
 <script>
-/* ===== MENÚ (SEGURO) ===== */
+document.addEventListener("DOMContentLoaded", () => {
 
+    /* ===== CARGAR HEADER ===== */
+    fetch("header.html")
+        .then(res => res.text())
+        .then(html => {
+            document.getElementById("header").innerHTML = html;
 
-if (btn && menu) {
-    btn.onclick = () => menu.classList.toggle("activo");
-    menu.querySelectorAll("a").forEach(a =>
-        a.onclick = () => menu.classList.remove("activo")
-    );
-}
+            const btn = document.getElementById("menuBtn");
+            const menu = document.getElementById("menuMovil");
 
-/* ===== GALERÍA ===== */
-const imagenes = document.querySelectorAll(".galeria img");
-const popup = document.getElementById("popup");
-const popupImg = document.getElementById("popupImg");
-const contador = document.getElementById("contador");
+            if (btn && menu) {
+                btn.onclick = () => menu.classList.toggle("activo");
+                menu.querySelectorAll("a").forEach(a =>
+                    a.onclick = () => menu.classList.remove("activo")
+                );
+            }
+        });
 
-let indice = 0;
-let zoomActivo = false;
-let startX = 0;
+    /* ===== GALERÍA ===== */
+    const imagenes = document.querySelectorAll(".galeria img");
+    const popup = document.getElementById("popup");
+    const popupImg = document.getElementById("popupImg");
+    const contador = document.getElementById("contador");
+    const btnIzq = document.querySelector(".flecha.izq");
+    const btnDer = document.querySelector(".flecha.der");
 
-imagenes.forEach((img, i) => {
-    img.addEventListener("click", () => {
-        indice = i;
-        mostrar();
+    let indice = 0;
+    let startX = 0;
+
+    imagenes.forEach((img, i) => {
+        img.addEventListener("click", () => {
+            indice = i;
+            mostrar();
+        });
     });
-});
 
-function mostrar() {
-    popupImg.src = imagenes[indice].src;
-    contador.textContent = `${indice + 1} / ${imagenes.length}`;
-    popup.style.visibility = "visible";
-    popupImg.classList.remove("zoom");
-    zoomActivo = false;
-}
-
-function siguiente() {
-    indice = (indice + 1) % imagenes.length;
-    mostrar();
-}
-
-function anterior() {
-    indice = (indice - 1 + imagenes.length) % imagenes.length;
-    mostrar();
-}
-
-/* ===== ZOOM ===== */
-popupImg.addEventListener("click", e => {
-    e.stopPropagation();
-    zoomActivo = !zoomActivo;
-    popupImg.classList.toggle("zoom", zoomActivo);
-});
-
-/* ===== CERRAR ===== */
-popup.addEventListener("click", e => {
-    if (e.target === popup) popup.style.visibility = "hidden";
-});
-
-/* ===== TECLADO ===== */
-document.addEventListener("keydown", e => {
-    if (popup.style.visibility !== "visible") return;
-
-    if (e.key === "ArrowRight") siguiente();
-    if (e.key === "ArrowLeft") anterior();
-    if (e.key === "Escape") popup.style.visibility = "hidden";
-});
-
-/* ===== SWIPE ===== */
-popup.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
-});
-
-popup.addEventListener("touchend", e => {
-    const endX = e.changedTouches[0].clientX;
-    const diff = startX - endX;
-
-    if (Math.abs(diff) > 50) {
-        diff > 0 ? siguiente() : anterior();
+    function mostrar() {
+        popupImg.classList.remove("zoom");
+        popupImg.src = imagenes[indice].src;
+        contador.textContent = `${indice + 1} / ${imagenes.length}`;
+        popup.style.visibility = "visible";
     }
-});
-</script>
 
+    function siguiente() {
+        indice = (indice + 1) % imagenes.length;
+        mostrar();
+    }
 
-</body>
-<script>
-fetch("header.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("header").innerHTML = data;
+    function anterior() {
+        indice = (indice - 1 + imagenes.length) % imagenes.length;
+        mostrar();
+    }
 
-    // ✅ AHORA SÍ existen los elementos
-    const btn = document.getElementById("menuBtn");
-    const menu = document.getElementById("menuMovil");
+    btnDer.onclick = siguiente;
+    btnIzq.onclick = anterior;
 
-    btn.onclick = () => {
-      menu.classList.toggle("activo");
+    /* ===== ZOOM ===== */
+    popupImg.onclick = e => {
+        e.stopPropagation();
+        popupImg.classList.toggle("zoom");
     };
 
-    menu.querySelectorAll("a").forEach(link => {
-      link.onclick = () => menu.classList.remove("activo");
+    /* ===== CERRAR ===== */
+    popup.onclick = e => {
+        if (e.target === popup) popup.style.visibility = "hidden";
+    };
+
+    /* ===== TECLADO ===== */
+    document.addEventListener("keydown", e => {
+        if (popup.style.visibility !== "visible") return;
+
+        if (e.key === "ArrowRight") siguiente();
+        if (e.key === "ArrowLeft") anterior();
+        if (e.key === "Escape") popup.style.visibility = "hidden";
     });
-  });
+
+    /* ===== SWIPE ===== */
+    popup.addEventListener("touchstart", e => {
+        startX = e.touches[0].clientX;
+    });
+
+    popup.addEventListener("touchend", e => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) diff > 0 ? siguiente() : anterior();
+    });
+
+});
 </script>
 
+</body>
 </html>
-
