@@ -229,10 +229,11 @@ h1 {
 
 /* ===== CELULAR ===== */
 @media (max-width: 768px) {
-
-    body::before {
-        position: absolute;
-        background-attachment: scroll;
+    
+        body::before {
+        background-size: contain;
+        background-position: center center;
+        background-attachment: scroll; /* se mueve con el dedo */
     }
 
     nav ul {
@@ -346,3 +347,4 @@ popup.onclick = e => { if (e.target === popup) popup.style.visibility = "hidden"
 
 </body>
 </html>
+
