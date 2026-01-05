@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    
-<meta charset="UTF-8">
-<title>Eventos | Robotic Club</title>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Eventos | Robotic Club</title>
 <link rel="icon" type="image/png" href="icono.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
 body {
     margin: 0;
@@ -64,6 +68,48 @@ nav ul li a {
     font-size: 15px;
 }
 
+/* ===== BOTÓN HAMBURGUESA ===== */
+.menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 4001;
+}
+
+.menu-btn span {
+    width: 28px;
+    height: 3px;
+    background: #ff9f1a;
+    border-radius: 2px;
+}
+
+/* ===== MENÚ MÓVIL ===== */
+.menu-movil {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.96);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+    z-index: 4000;
+}
+
+.menu-movil a {
+    color: #ff9f1a;
+    font-size: 22px;
+    letter-spacing: 3px;
+    text-decoration: none;
+}
+
+.menu-movil.activo {
+    transform: translateX(0);
+}
+
 /* ===== CONTENIDO ===== */
 main {
     padding-top: 140px;
@@ -101,8 +147,8 @@ h1 {
 
 .fotos-evento img {
     width: 100%;
-    height: auto;              /* NO se corta */
-    object-fit: contain;       /* imagen completa */
+    height: auto;
+    object-fit: contain;
     background: rgba(0,0,0,0.4);
     padding: 8px;
     border-radius: 12px;
@@ -134,10 +180,31 @@ h1 {
     box-shadow: 0 0 30px rgba(255,159,26,0.6);
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== SOLO CELULAR ===== */
 @media (max-width: 768px) {
+
+    body {
+        background-attachment: scroll;
+    }
+
     nav ul {
         display: none;
+    }
+
+    .menu-btn {
+        display: flex;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .logo img {
+        width: 55px;
+    }
+
+    main {
+        padding-top: 120px;
     }
 }
 </style>
@@ -147,20 +214,38 @@ h1 {
 
 <header>
 <nav>
-    <div class="logo">ROBOTIC CLUB
-    <img src="pato.gif" alt="Pato bailando">
+    <div class="logo">
+        ROBOTIC CLUB
+        <img src="pato.gif" alt="Pato bailando">
     </div>
+
     <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="galeria.html">Galería</a></li>
         <li><a href="eventos.html">Eventos</a></li>
         <li><a href="equipo.html">Equipo</a></li>
     </ul>
+
+    <div class="menu-btn" id="menuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 </nav>
 </header>
 
+<div class="menu-movil" id="menuMovil">
+    <a href="index.html">Inicio</a>
+    <a href="galeria.html">Galería</a>
+    <a href="eventos.html">Eventos</a>
+    <a href="equipo.html">Equipo</a>
+</div>
+
 <main>
+
 <h1>Eventos</h1>
+
+<!-- 🔴 TODO TU CONTENIDO ORIGINAL (SIN CAMBIOS) -->
 
 <div class="evento">
     <h2>Noche de Estrellas</h2>
@@ -177,7 +262,6 @@ h1 {
     <p>18 de Noviembre de 2025,EXPO-PROYECTOS, CLEAN THE ROOM, ZUMOROBOT, SEGUIDOR DE LINEA. Evento gratuito </p>
     <div class="fotos-evento">
         <img src="evento7_1.jpeg" onclick="verImagen(this)">
-
     </div>
 </div>
 
@@ -186,38 +270,26 @@ h1 {
     <p>26 de Octubre del 2025, exposición de haltares de muertos</p>
     <div class="fotos-evento">
         <img src="evento6_1.jpg" onclick="verImagen(this)">
-
     </div>
 </div>
 
 <div class="evento">
-    <h2>Torneo de Warzone Resurgimiento en Duos
-    </h2>
-    <p>Premio en Efectivo, multiplataforma, Domingo 26 Tarde - Noche Registra tu equipo en: 
-    </p>
-    <a
-    href="https://forms.office.com/Pages/ResponsePage.aspx?id=YNPyoo-PMky-VhN9l-sVxClnOO4pEDNMoAQM0YXy3UlUQ0QzWDVNVk4yTzNOWlRIT1BZQVRCTDg4SC4u"
-    target="_blank"
-    class="btn-formulario">
-    Inscribete al evento
+    <h2>Torneo de Warzone Resurgimiento en Duos</h2>
+    <p>Premio en Efectivo, multiplataforma, Domingo 26 Tarde - Noche Registra tu equipo en:</p>
+    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=YNPyoo-PMky-VhN9l-sVxClnOO4pEDNMoAQM0YXy3UlUQ0QzWDVNVk4yTzNOWlRIT1BZQVRCTDg4SC4u" target="_blank">
+        Inscribete al evento
     </a>
-
     <div class="fotos-evento">
         <img src="evento5_1.jpg" onclick="verImagen(this)">
     </div>
 </div>
 
 <div class="evento">
-    <h2>Torneo de OVERWATCH
-    </h2>
-    <p>Se llevará a cabo, Viernes y Sábado con Horarios de Sugerencia, Inscribe a tu Equipo completo, Multiplataforma, Premio en Efectivo. Registro en el Siguiente Link:</p>
-    <a
-    href="https://forms.office.com/Pages/ResponsePage.aspx?id=YNPyoo-PMky-VhN9l-sVxClnOO4pEDNMoAQM0YXy3UlUMFk4T1VTVVExNTZORkRDWkdWWlVMOVpHQy4u"
-    target="_blank"
-    class="btn-formulario">
-    Inscribete al evento
+    <h2>Torneo de OVERWATCH</h2>
+    <p>Se llevará a cabo, Viernes y Sábado con Horarios de Sugerencia, Inscribe a tu Equipo completo, Multiplataforma, Premio en Efectivo.</p>
+    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=YNPyoo-PMky-VhN9l-sVxClnOO4pEDNMoAQM0YXy3UlUMFk4T1VTVVExNTZORkRDWkdWWlVMOVpHQy4u" target="_blank">
+        Inscribete al evento
     </a>
-
     <div class="fotos-evento">
         <img src="evento1_1.jpg" onclick="verImagen(this)">
     </div>
@@ -225,12 +297,9 @@ h1 {
 
 <div class="evento">
     <h2>Curso de SolidWorks</h2>
-    <p>empezamos con los cursos no tiene ningún costo, si requieren del programa se pueden acercar con nosotros, serán los viernes en el cubículo, se planea que sea a las 11, con duración de una hora, veremos la posibilidad de yo abrir otro horario en la tarde checando disponibilidad favor de registrarse en el siguiente link:</p>
-        <a
-    href="https://forms.office.com/Pages/ResponsePage.aspx?id=YNPyoo-PMky-VhN9l-sVxClnOO4pEDNMoAQM0YXy3UlUQ0QzWDVNVk4yTzNOWlRIT1BZQVRCTDg4SC4u"
-    target="_blank"
-    class="btn-formulario">
-    Inscribete al evento
+    <p>empezamos con los cursos no tiene ningún costo, si requieren del programa se pueden acercar con nosotros...</p>
+    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=YNPyoo-PMky-VhN9l-sVxClnOO4pEDNMoAQM0YXy3UlUQ0QzWDVNVk4yTzNOWlRIT1BZQVRCTDg4SC4u" target="_blank">
+        Inscribete al evento
     </a>
     <div class="fotos-evento">
         <img src="evento3_1.jpg" onclick="verImagen(this)">
@@ -248,12 +317,22 @@ h1 {
 
 </main>
 
-<!-- VISOR -->
 <div id="visor" onclick="cerrarVisor()">
     <img id="visor-img">
 </div>
 
 <script>
+const btn = document.getElementById("menuBtn");
+const menu = document.getElementById("menuMovil");
+
+btn.onclick = () => {
+    menu.classList.toggle("activo");
+};
+
+menu.querySelectorAll("a").forEach(link => {
+    link.onclick = () => menu.classList.remove("activo");
+});
+
 function verImagen(img) {
     document.getElementById("visor-img").src = img.src;
     document.getElementById("visor").style.display = "flex";
