@@ -411,3 +411,76 @@ h1 {
         object-fit: contain;
     }
 }
+/* ===============================
+   EQUIPO
+================================ */
+
+.equipo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+}
+
+.miembro {
+    background: rgba(0,0,0,0.45);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 0 20px rgba(255,140,0,0.35);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.miembro:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 30px rgba(255,170,0,0.6);
+}
+
+.miembro img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ff9f1a;
+    margin-bottom: 15px;
+}
+
+.miembro h3 {
+    margin: 10px 0 5px;
+    color: white;
+}
+
+.miembro p {
+    color: #ffc36a;
+    font-size: 14px;
+}
+
+/* ===============================
+   RESPONSIVE EQUIPO
+================================ */
+
+@media (max-width: 768px) {
+
+    body {
+        background-attachment: scroll;
+        background-position: center top;
+    }
+
+    main {
+        padding-top: 100px;
+    }
+
+    .equipo {
+        gap: 20px;
+        padding: 25px 15px;
+    }
+
+    .miembro {
+        padding: 20px;
+    }
+
+    .miembro img {
+        width: 110px;
+        height: 110px;
+    }
+}
