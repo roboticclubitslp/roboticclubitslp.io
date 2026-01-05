@@ -16,7 +16,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* ===== FONDO PROFESIONAL ===== */
+/* ===== FONDO PROFESIONAL ESTABLE ===== */
 body {
     margin: 0;
     font-family: 'Roboto Mono', monospace;
@@ -33,7 +33,6 @@ body::before {
         linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
         url("fondo.jpg") center center / cover no-repeat;
     z-index: -1;
-    will-change: transform;
 }
 
 /* ===== MENÚ ===== */
@@ -209,14 +208,12 @@ h1 {
     text-decoration: none;
 }
 
-/* ===== SOLO CELULAR (SIN ROMPER PC) ===== */
+/* ===== SOLO CELULAR (CORRECCIÓN FINAL) ===== */
 @media (max-width: 768px) {
 
-    body {
-        background-attachment: scroll;     /* se mueve con el dedo */
-        background-size: auto 100vh;        /* 🔒 tamaño estable */
-        background-position: center top;   /* centrada */
-        background-repeat: no-repeat;
+    body::before {
+        background-size: contain;
+        background-position: center center;
     }
 
     nav ul {
@@ -250,8 +247,6 @@ h1 {
         padding: 35px 20px;
     }
 }
-
-
 </style>
 </head>
 
