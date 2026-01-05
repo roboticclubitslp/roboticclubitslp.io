@@ -308,4 +308,36 @@ h1 {
     .popup img.zoom {
         transform: scale(1.4);
     }
+    .video-box {
+        margin: 20px auto;
+        border-radius: 14px;
+    }
+
+    .video-box video {
+        aspect-ratio: 16 / 9;
+        height: auto;
+        max-height: 220px; /* 🔑 clave */
+        object-fit: cover;
+    }
+    .info,
+    .redes {
+        margin: 30px 15px;
+        padding: 25px 20px;
+    }
+
+    .info h2,
+    .redes h2 {
+        font-size: 22px;
+        letter-spacing: 2px;
+    }
+
+    .info p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+    h1 {
+        font-size: 32px;
+        letter-spacing: 3px;
+    }
 }
+
