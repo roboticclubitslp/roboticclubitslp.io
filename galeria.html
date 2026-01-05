@@ -10,14 +10,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+/* ===== BASE ===== */
 body {
     margin: 0;
     font-family: 'Roboto Mono', monospace;
-    background:
-        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-        url("fondo.jpg") center / cover no-repeat fixed;
     color: #ededed;
     min-height: 100vh;
+    background: black;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ===== FONDO PROFESIONAL ===== */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url("fondo.jpg") center center / cover no-repeat;
+    z-index: -1;
+    will-change: transform;
 }
 
 /* ===== MENÚ ===== */
@@ -141,13 +154,6 @@ h1 {
     text-shadow: 0 0 15px rgba(255,159,26,0.6);
 }
 
-/* ===== GLOW REUTILIZABLE ===== */
-.glow-orange {
-    box-shadow:
-        0 0 20px rgba(255,159,26,0.45),
-        0 0 45px rgba(255,159,26,0.25);
-}
-
 /* ===== GALERÍA ===== */
 .galeria {
     display: grid;
@@ -162,7 +168,7 @@ h1 {
     object-fit: cover;
     border-radius: 15px;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    transition: 0.3s;
 
     box-shadow:
         0 0 20px rgba(255,159,26,0.45),
@@ -195,7 +201,6 @@ h1 {
     max-height: 85vh;
     object-fit: contain;
     border-radius: 18px;
-
     box-shadow:
         0 0 30px rgba(255,159,26,0.6),
         0 0 80px rgba(255,159,26,0.35);
@@ -209,7 +214,6 @@ h1 {
     font-size: 55px;
     color: #ff9f1a;
     cursor: pointer;
-    user-select: none;
     padding: 15px;
 }
 
@@ -223,10 +227,11 @@ h1 {
     font-size: 14px;
 }
 
-/* ===== SOLO CELULAR ===== */
+/* ===== CELULAR ===== */
 @media (max-width: 768px) {
 
-    body {
+    body::before {
+        position: absolute;
         background-attachment: scroll;
     }
 
@@ -254,7 +259,7 @@ h1 {
 <nav>
     <div class="logo">
         ROBOTIC CLUB
-        <img src="pato.gif" alt="Pato bailando">
+        <img src="pato.gif">
     </div>
 
     <ul>
@@ -265,9 +270,7 @@ h1 {
     </ul>
 
     <div class="menu-btn" id="menuBtn">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
     </div>
 </nav>
 </header>
@@ -319,11 +322,8 @@ h1 {
 <script>
 const btn = document.getElementById("menuBtn");
 const menu = document.getElementById("menuMovil");
-
 btn.onclick = () => menu.classList.toggle("activo");
-menu.querySelectorAll("a").forEach(a => {
-    a.onclick = () => menu.classList.remove("activo");
-});
+menu.querySelectorAll("a").forEach(a => a.onclick = () => menu.classList.remove("activo"));
 
 const imagenes = document.querySelectorAll(".galeria img");
 const popup = document.getElementById("popup");
@@ -331,43 +331,17 @@ const popupImg = document.getElementById("popupImg");
 const contador = document.getElementById("contador");
 let indice = 0;
 
-imagenes.forEach((img, i) => {
-    img.onclick = () => {
-        indice = i;
-        mostrar();
-    };
-});
+imagenes.forEach((img, i) => img.onclick = () => { indice = i; mostrar(); });
 
 function mostrar() {
     popupImg.src = imagenes[indice].src;
-    contador.textContent = (indice + 1) + " / " + imagenes.length;
+    contador.textContent = `${indice + 1} / ${imagenes.length}`;
     popup.style.visibility = "visible";
 }
+function siguiente(){ indice = (indice + 1) % imagenes.length; mostrar(); }
+function anterior(){ indice = (indice - 1 + imagenes.length) % imagenes.length; mostrar(); }
 
-function siguiente() {
-    indice = (indice + 1) % imagenes.length;
-    mostrar();
-}
-
-function anterior() {
-    indice = (indice - 1 + imagenes.length) % imagenes.length;
-    mostrar();
-}
-
-popup.onclick = e => {
-    if (e.target === popup) popup.style.visibility = "hidden";
-};
-
-let inicioX = 0;
-popup.addEventListener("touchstart", e => {
-    inicioX = e.changedTouches[0].screenX;
-});
-
-popup.addEventListener("touchend", e => {
-    let finX = e.changedTouches[0].screenX;
-    if (finX < inicioX - 50) siguiente();
-    if (finX > inicioX + 50) anterior();
-});
+popup.onclick = e => { if (e.target === popup) popup.style.visibility = "hidden"; };
 </script>
 
 </body>
