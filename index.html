@@ -211,11 +211,16 @@ h1 {
 
 /* ===== SOLO CELULAR (SIN ROMPER PC) ===== */
 @media (max-width: 768px) {
-
-    body::before {
-        position: absolute;
-        background-position: center top;
+    
+        body::before {
+        position: absolute;              /* se mueve con el scroll */
+        height: 100vh;                    /* ocupa una pantalla */
+        background-size: contain;         /* imagen completa */
+        background-position: center top;  /* bien encuadrada */
+        background-repeat: no-repeat;
     }
+
+
 
     nav ul {
         display: none;
